@@ -1,6 +1,12 @@
 import * as Joi from "joi"
 import { joiResolver } from "@hookform/resolvers/joi"
+
+
+
 const signupSchema = Joi.object({
+ 
+
+
     email:Joi.string().email({
          minDomainSegments:2,
          tlds:{ allow:["com","net"]}
@@ -12,6 +18,7 @@ const signupSchema = Joi.object({
             else if(err.code === "string.email"){
                 err.message="Please enter a valid email";
             }
+            
         });
         return errors;
     }),
@@ -23,6 +30,7 @@ const signupSchema = Joi.object({
             else if(err.code==="string.pattern.only"){
                 err.message="Password must contain only characters,numbers and &#";
             }
+           
         });
         return errors;
     }),
@@ -34,6 +42,7 @@ const signupSchema = Joi.object({
             else if(err.code==="any.only"){
                 err.message="password and reenterpassword must be same";
             }
+          
         });
         return errors;
     }),
